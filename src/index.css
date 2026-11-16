@@ -96,3 +96,29 @@
     stroke-dashoffset: -240;
   }
 }
+
+/* Section navigation and collection disclosures. */
+section[id], article[id] { scroll-margin-top: 90px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #f0531a; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee { animation: none; }
+  .fabric-ribbon { animation: none; }
+}
+
+.collection-details summary::-webkit-details-marker { display: none; }
+
+/* Full-bleed interactive fabric scene; the veil protects the text only. */
+.hero-scene, .hero-scene-content { min-height: max(880px, 100svh); }
+.hero-scene-veil {
+  background: linear-gradient(180deg, #f4f1ec 8%, rgba(244,241,236,.96) 34%, rgba(244,241,236,.58) 52%, rgba(244,241,236,0) 74%);
+}
+@media (min-width: 1024px) {
+  .hero-scene, .hero-scene-content { min-height: max(760px, 100svh); }
+  .hero-scene-veil {
+    background: linear-gradient(90deg, #f4f1ec 0%, rgba(244,241,236,.98) 26%, rgba(244,241,236,.90) 38%, rgba(244,241,236,.28) 57%, rgba(244,241,236,0) 74%);
+  }
+}
+.collection-details-icon { transition: transform .2s ease; }
+.collection-details[open] .collection-details-icon { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) { .collection-details-icon { transition: none; } }

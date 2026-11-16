@@ -28,7 +28,7 @@ const RIBBONS: Ribbon[] = [
  * Flowing fabric-ribbon background, drawn on canvas.
  * Layered sine ribbons drift slowly like cloth in wind.
  */
-export default function FlowBackground({ className = '' }: { className?: string }) {
+export default function FlowBackground({ className = '', showcase = false }: { className?: string; showcase?: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -53,11 +53,14 @@ export default function FlowBackground({ className = '' }: { className?: string 
     const ro = new ResizeObserver(resize)
     ro.observe(canvas)
 
-    const waveY = (r: Ribbon, x: number, t: number) =>
-      h * r.baseY -
-      x * r.rise +
-      Math.sin(x * r.freq1 + t * r.speed + r.phase) * r.amp1 +
-      Math.sin(x * r.freq2 - t * r.speed * 0.62 + r.phase * 1.7) * r.amp2
+    const waveY = (r: Ribbon, x: number, t: number) => {
+      const scale = showcase ? Math.min(w / 900, h / 700, 1) : 1
+      const base = showcase ? r.baseY - 0.46 : r.baseY
+      const rise = showcase ? r.rise * 0.55 : r.rise
+      return h * base - x * rise +
+        Math.sin(x * r.freq1 + t * r.speed + r.phase) * r.amp1 * scale +
+        Math.sin(x * r.freq2 - t * r.speed * 0.62 + r.phase * 1.7) * r.amp2 * scale
+    }
 
     const drawRibbon = (r: Ribbon, t: number) => {
       const step = 10
@@ -73,7 +76,7 @@ export default function FlowBackground({ className = '' }: { className?: string 
         ctx.lineTo(x, y)
       }
       for (let x = w + 60; x >= -60; x -= step) {
-        const y = waveY(r, x, t) + r.thickness
+        const y = waveY(r, x, t) + r.thickness * (showcase ? Math.min(w / 900, h / 700, 1) : 1)
         if (y > yMax) yMax = y
         ctx.lineTo(x, y)
       }
@@ -105,7 +108,7 @@ export default function FlowBackground({ className = '' }: { className?: string 
       cancelAnimationFrame(raf)
       ro.disconnect()
     }
-  }, [])
+  }, [showcase])
 
   return <canvas ref={ref} className={`pointer-events-none ${className}`} aria-hidden="true" />
 }

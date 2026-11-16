@@ -1,5 +1,7 @@
-import { Mountain, Zap, Thermometer, Sparkles } from 'lucide-react'
+import { Mountain, Zap, Thermometer, Leaf } from 'lucide-react'
 import { Reveal, SectionLabel, Cross } from '../components/Decor'
+import GarmentGallery from '../components/GarmentGallery'
+import { GARMENT_APPLICATIONS } from '../data/garments'
 
 const COLLECTIONS = [
   {
@@ -9,6 +11,7 @@ const COLLECTIONS = [
     subtitle: 'Outdoor Apparel Fabrics',
     desc: 'Engineered for mountaineering, hiking, skiing and fishing — with protective functionality at the core.',
     items: [
+      ['Nylon / Cotton + TPU', 'Nylon-cotton fabrics laminated with TPU for technical outerwear, including fleece-lined constructions.'],
       ['Nylon Oxford Fabric', 'High tenacity & abrasion resistance for softshell jackets, backpacks and tents.'],
       ['Waterproof & Breathable', 'PU / TPU lamination or coating balancing waterproofness and breathability — for hardshell and ski wear.'],
       ['Windproof Laminated', '2-layer / 3-layer bonded constructions for warmth and wind protection.'],
@@ -20,7 +23,7 @@ const COLLECTIONS = [
     no: '02',
     icon: Zap,
     title: 'Sports Performance',
-    subtitle: 'Moisture-Wicking Fabrics',
+    subtitle: 'Stretch & Activewear Fabrics',
     desc: 'Built for fitness, running, yoga and ball sports — quick-dry performance and comfort first.',
     items: [
       ['4-Way / Mechanical Stretch', 'Polyester & nylon stretch fabrics for full freedom of movement — softshell and hiking pants.'],
@@ -50,68 +53,65 @@ const COLLECTIONS = [
   },
   {
     no: '04',
-    icon: Sparkles,
-    title: "Women's Fashion",
-    subtitle: 'Tencel™ & Linen Fabrics',
-    desc: 'Premium Tencel™ (lyocell) and linen — prized for breathability, natural softness and refined aesthetics.',
+    icon: Leaf,
+    title: 'Breathable Comfort',
+    subtitle: 'Linen / Cotton Trouser Fabrics',
+    desc: 'Breathable linen-cotton fabrics for everyday trousers and shorts, combining natural texture with relaxed comfort.',
     items: [
-      ['Tencel™ Lyocell', 'Silky drape, natural softness and excellent moisture management.'],
-      ['Linen & Linen Blends', 'Airy, breathable and textured — elevated warm-weather apparel.'],
+      ['Linen / Cotton Blends', 'Linen-cotton fabrics for casual trousers and warm-weather shorts.'],
+      ['Plain & Textured Weaves', 'Woven textures featured in the navy and brown trouser applications.'],
+      ['Striped Weaves', 'Striped linen-cotton fabric featured in the khaki shorts application.'],
     ],
   },
 ]
 
+const PRESENTATIONS = [
+  { headline: 'Ready for the elements.', applications: ['Shell jackets', 'Hiking trousers', 'Outdoor equipment'], direction: 'Protection / Structure / Durability' },
+  { headline: 'Made for movement.', applications: ['Training trousers', 'Running tops', 'Yoga & athleisure'], direction: 'Stretch / Airflow / Comfort' },
+  { headline: 'Light layers. Lasting comfort.', applications: ['Down jackets', 'Padded coats', 'Shells & linings'], direction: 'Lightness / Density / Softness' },
+  { headline: 'Natural texture. Everyday ease.', applications: ['Casual trousers', 'Summer shorts', 'Cargo trousers'], direction: 'Breathability / Texture / Comfort' },
+]
+
 export default function Collections() {
   return (
-    <section id="collections" className="relative bg-[#ece8e0] py-24 md:py-32">
+    <section id="collections" className="relative bg-[#ece8e0] py-16 md:py-24">
       <Cross className="right-[6%] top-16 hidden md:block" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <Reveal>
           <SectionLabel index="01" label="Fabric Collections" />
-          <h2 className="font-display text-5xl leading-[0.95] text-[#1a1a1a] md:text-7xl">
-            FOUR LINES.
-            <br />
-            <span className="text-[#f0531a]">ONE STANDARD.</span>
-          </h2>
-          <p className="mt-6 max-w-xl text-[#3a3a3a]">
-            From hardshell shells to down-proof taffeta — every fabric is developed and manufactured
-            to meet the demanding standards of mid-to-high-end apparel.
-          </p>
+          <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
+            <h2 className="font-display text-5xl leading-[1.02] md:text-7xl">FOUR LINES.<br /><span className="text-[#f0531a]">ONE STANDARD.</span></h2>
+            <p className="max-w-md text-sm leading-relaxed text-[#59554e]">From outdoor shells to breathable linen-cotton trousers. Explore the applications, material directions and fabric types behind each collection.</p>
+          </div>
         </Reveal>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {COLLECTIONS.map((c, i) => (
-            <Reveal key={c.no} delay={i * 0.08}>
-              <article className="group relative flex h-full flex-col border border-[#d8d3c8] bg-[#f4f1ec] p-7 transition-all duration-300 hover:border-[#1a1a1a] hover:shadow-[8px_8px_0_0_#f0531a] md:p-9">
-                <div className="flex items-start justify-between">
-                  <c.icon className="h-8 w-8 text-[#f0531a]" strokeWidth={1.5} />
-                  <span className="font-display text-5xl text-[#d8d3c8] transition-colors group-hover:text-[#f0531a]">
-                    {c.no}
-                  </span>
+        <div className="mt-12 space-y-16 md:mt-16 md:space-y-24">
+          {COLLECTIONS.map((c, i) => {
+            const presentation = PRESENTATIONS[i]
+            const garmentCollection = (['outdoor', 'sports', 'thermal', 'comfort'] as const)[i]
+            const garments = GARMENT_APPLICATIONS.filter(item => item.collection === garmentCollection)
+            return (
+              <article key={c.no} id={`collection-${i + 1}`} className="grid items-center gap-8 border-t border-[#c9c3b8] pt-6 lg:grid-cols-2 lg:gap-14">
+                <div className={`min-w-0 ${i % 2 ? 'lg:order-2' : ''}`}>
+                  <GarmentGallery garments={garments} />
                 </div>
-                <h3 className="mt-5 font-display text-3xl uppercase tracking-tight md:text-4xl">
-                  {c.title}
-                </h3>
-                <p className="mt-1 font-tech text-[11px] uppercase tracking-[0.2em] text-[#6b665e]">
-                  {c.subtitle}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-[#3a3a3a]">{c.desc}</p>
-                <ul className="mt-6 flex-1 space-y-3 border-t border-[#d8d3c8] pt-5">
-                  {c.items.map(([name, detail]) => (
-                    <li key={name} className="text-sm">
-                      <span className="font-semibold text-[#1a1a1a]">
-                        <span className="mr-2 text-[#f0531a]">▪</span>
-                        {name}
-                      </span>
-                      <span className="mt-0.5 block pl-5 text-[13px] leading-relaxed text-[#6b665e]">
-                        {detail}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className={`min-w-0 ${i % 2 ? 'lg:order-1' : ''}`}>
+                  <div className="flex items-center gap-3 text-[#a63810]"><c.icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" /><p className="font-tech text-[10px] uppercase tracking-[0.18em]">{c.no} / {c.subtitle}</p></div>
+                  <h3 className="mt-4 font-display text-4xl uppercase leading-tight md:text-5xl">{c.title}</h3>
+                  <p className="mt-4 text-lg font-medium text-[#3a3a3a]">{presentation.headline}</p>
+                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#59554e]">{c.desc}</p>
+                  <div className="mt-7 border-t border-[#c9c3b8] pt-5">
+                    <p className="font-tech text-[10px] uppercase tracking-widest text-[#6b665e]">Typical applications</p>
+                    <ul className="mt-3 flex flex-wrap gap-2">{presentation.applications.map(application => <li key={application} className="bg-[#e1dbd0] px-3 py-2 text-xs text-[#3a3a3a]">{application}</li>)}</ul>
+                    <p className="mt-4 text-xs text-[#6b665e]">{presentation.direction}</p>
+                  </div>
+                  <details className="collection-details mt-6 border-y border-[#c9c3b8]">
+                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-tech text-[11px] uppercase tracking-wider"><span>Explore fabric types ({c.items.length})</span><span className="collection-details-icon text-xl text-[#a63810]" aria-hidden="true">+</span></summary>
+                    <ul className="divide-y divide-[#d8d3c8] pb-3">{c.items.map(([name, detail]) => <li key={name} className="py-3"><h4 className="text-sm font-semibold">{name}</h4><p className="mt-1 text-[13px] leading-relaxed text-[#59554e]">{detail}</p></li>)}</ul>
+                  </details>
+                </div>
               </article>
-            </Reveal>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

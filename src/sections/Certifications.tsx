@@ -6,50 +6,45 @@ const CERTS = [
     icon: Recycle,
     name: 'GRS',
     full: 'Global Recycled Standard',
-    desc: 'Our quality assurance and sustainability are certified to the Global Recycled Standard (GRS) — underscoring our commitment to sustainable manufacturing and the integration of recycled materials across our supply chain.',
+    scope: 'Fanmao / Company certification',
+    desc: 'Fanmao holds GRS certification as part of our work with recycled textile materials.',
+    note: 'Recycled materials',
   },
   {
     icon: ShieldCheck,
     name: 'OEKO-TEX®',
-    full: 'Standard 100',
-    desc: 'All affiliated dyeing facilities are fully compliant with OEKO-TEX® Standard 100 — every fabric we produce is rigorously tested and verified free from harmful substances.',
+    full: 'STANDARD 100',
+    scope: 'Shenghong / Dyeing partner',
+    desc: 'We collaborate with Shenghong Group for dyeing. The partner dyeing facility complies with OEKO-TEX® STANDARD 100.',
+    note: 'Dyeing partner compliance',
   },
 ]
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="bg-[#ece8e0] py-24 md:py-32">
+    <section id="certifications" className="bg-[#ece8e0] py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <Reveal>
-          <SectionLabel index="04" label="Certifications & Compliance" />
-          <h2 className="font-display text-5xl leading-[0.95] text-[#1a1a1a] md:text-7xl">
-            RESPONSIBLE
-            <br />
-            <span className="text-[#f0531a]">BY CHOICE.</span>
-          </h2>
+          <SectionLabel index="04" label="Certifications & Partners" />
+          <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-14">
+            <h2 className="font-display text-5xl leading-[1.02] md:text-7xl">RESPONSIBLE<br /><span className="text-[#f0531a]">BY CHOICE.</span></h2>
+            <p className="max-w-md text-sm leading-relaxed text-[#59554e]">Company certification and dyeing partner compliance support our approach to textile development.</p>
+          </div>
         </Reveal>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {CERTS.map((c, i) => (
-            <Reveal key={c.name} delay={i * 0.1}>
-              <div className="flex h-full flex-col border border-[#d8d3c8] bg-[#f4f1ec] p-8 md:p-10">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#f0531a]">
-                    <c.icon className="h-7 w-7 text-[#f0531a]" strokeWidth={1.5} />
-                  </span>
-                  <div>
-                    <h3 className="font-display text-2xl uppercase tracking-tight">{c.name}</h3>
-                    <p className="font-tech text-[11px] uppercase tracking-[0.2em] text-[#6b665e]">
-                      {c.full}
-                    </p>
-                  </div>
+        <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2">
+          {CERTS.map(c => (
+            <article key={c.name} className="flex h-full min-w-0 flex-col border-t-2 border-[#f0531a] bg-[#f4f1ec] p-6 md:p-9">
+              <p className="font-tech text-[10px] uppercase tracking-wider text-[#a63810]">{c.scope}</p>
+              <div className="mt-6 flex items-center gap-4">
+                <c.icon className="h-8 w-8 shrink-0 text-[#a63810]" strokeWidth={1.5} aria-hidden="true" />
+                <div className="min-w-0">
+                  <h3 className="font-display text-3xl">{c.name}</h3>
+                  <p className="mt-1 font-tech text-[10px] uppercase tracking-wider text-[#6b665e]">{c.full}</p>
                 </div>
-                <p className="mt-6 text-sm leading-relaxed text-[#3a3a3a]">{c.desc}</p>
-                <span className="mt-auto pt-6 font-tech text-[11px] uppercase tracking-[0.2em] text-[#f0531a]">
-                  ▪ Verified & audited
-                </span>
               </div>
-            </Reveal>
+              <p className="mb-7 mt-6 text-sm leading-relaxed text-[#3a3a3a]">{c.desc}</p>
+              <p className="mt-auto border-t border-[#d8d3c8] pt-4 font-tech text-[10px] uppercase tracking-wider text-[#6b665e]">{c.note}</p>
+            </article>
           ))}
         </div>
       </div>
