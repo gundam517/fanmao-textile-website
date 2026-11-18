@@ -56,8 +56,8 @@ export default function Contact() {
                 Headquarters
               </p>
               <p className="mt-2 text-sm leading-relaxed">
-                4F, Building 12, Shenghong Science &amp; Technology Park, Shengze Town, Wujiang
-                District, Suzhou, Jiangsu, China
+                4th Floor (North), Building 12, Textile Technology Park, South Second Ring Road,
+                Bali, Shengze Town, Wujiang District, Suzhou, Jiangsu, China
               </p>
             </div>
           </Reveal>
