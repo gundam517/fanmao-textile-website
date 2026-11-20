@@ -220,16 +220,16 @@ export default function FabricRibbons({ children }: { children: ReactNode }) {
     <div className="hero-scene-layout relative flex flex-col">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
       {children}
-      <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-7xl items-end justify-between gap-3 px-5 pb-5 md:px-10">
-        <div className="min-w-0 text-[#3b352f]">
-          <p className="font-tech text-[9px] uppercase tracking-wider">{selected === null ? 'Select a form to explore' : fabrics[selected].material}</p>
+      <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-7xl flex-wrap items-end justify-between gap-3 px-5 pb-5 md:px-10">
+        <div className="min-w-0 flex-1 basis-36 text-[#3b352f]">
+          <p className="font-tech text-xs uppercase tracking-wider">{selected === null ? 'Select a form to explore' : fabrics[selected].material}</p>
           <p className="mt-1 font-display text-lg uppercase md:text-xl">{selected === null ? 'Four material perspectives' : fabrics[selected].name}</p>
-          <p className="mt-2 font-tech text-[8px] uppercase tracking-wider text-[#6b665e]">Illustrative fabric forms</p>
+          <p className="mt-2 font-tech text-xs uppercase tracking-wider text-[#6b665e]">Illustrative fabric forms</p>
         </div>
-        <button type="button" onClick={() => { pausedRef.current = !paused; setPaused(!paused); requestDrawRef.current() }} aria-pressed={paused} className="pointer-events-auto min-h-11 shrink-0 bg-[#f4f1ec]/80 px-3 py-2 font-tech text-[9px] uppercase tracking-wider text-[#59554e] underline decoration-[#b8b2a7] underline-offset-4">{paused ? 'Play motion' : 'Pause motion'}</button>
+        <button type="button" onClick={() => { pausedRef.current = !paused; setPaused(!paused); requestDrawRef.current() }} aria-pressed={paused} className="pointer-events-auto min-h-11 shrink-0 bg-[#f4f1ec]/80 px-3 py-2 font-tech text-xs uppercase tracking-wider text-[#59554e] underline decoration-[#b8b2a7] underline-offset-4">{paused ? 'Play motion' : 'Pause motion'}</button>
       </div>
       <nav aria-label="Fabric forms" className="relative z-10 grid grid-cols-2 gap-x-4 border-t border-[#b8b2a7]/50 bg-[#f4f1ec]/90 px-5 py-3 md:grid-cols-4 md:px-10 md:py-4">
-        {fabrics.map((fabric, i) => <a key={fabric.href} href={fabric.href} onFocus={() => select(i)} onBlur={() => select(null)} onMouseEnter={() => select(i)} onMouseLeave={() => select(null)} className={`flex min-h-12 items-center gap-3 py-2 text-[11px] transition-colors ${selected === i ? 'text-[#a63810]' : 'text-[#59554e]'}`}><span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: `rgb(${fabric.color.join(',')})` }} /><span>{fabric.name}</span></a>)}
+        {fabrics.map((fabric, i) => <a key={fabric.href} href={fabric.href} onFocus={() => select(i)} onBlur={() => select(null)} onMouseEnter={() => select(i)} onMouseLeave={() => select(null)} className={`flex min-h-12 items-center gap-3 py-2 text-sm transition-colors ${selected === i ? 'text-[#a63810]' : 'text-[#59554e]'}`}><span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: `rgb(${fabric.color.join(',')})` }} /><span>{fabric.name}</span></a>)}
       </nav>
     </div>
   )

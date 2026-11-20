@@ -63,18 +63,18 @@ export default function Navbar() {
           <img src={logo} alt="Fanmao Textile logo" className="h-10 w-10 object-cover" />
           <div className="leading-tight">
             <p className="text-sm font-bold tracking-wide">SUZHOU FANMAO</p>
-            <p className="font-tech text-[10px] uppercase tracking-[0.2em] text-[#6b665e]">
+            <p className="font-tech text-xs uppercase tracking-[0.2em] text-[#6b665e]">
               Textile Technology
             </p>
           </div>
         </a>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-8 lg:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:flex xl:gap-8">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-tech text-xs uppercase tracking-[0.18em] text-[#3a3a3a] transition-colors hover:text-[#f0531a]"
+              className="font-tech text-sm uppercase tracking-wider text-[#3a3a3a] transition-colors hover:text-[#f0531a]"
             >
               {l.label}
             </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-3 font-tech text-sm uppercase tracking-[0.18em] text-[#3a3a3a]"
+              className="block py-3 font-tech text-base uppercase tracking-wider text-[#3a3a3a]"
             >
               {l.label}
             </a>

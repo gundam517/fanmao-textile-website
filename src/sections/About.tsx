@@ -18,23 +18,23 @@ export default function About() {
           <div>
             <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
               <p className="font-display text-[6rem] leading-none text-[#f0531a] md:text-[8rem]">2005</p>
-              <p className="pb-2 font-tech text-[11px] uppercase leading-relaxed tracking-widest text-[#6b665e]">Established in<br />Shengze, Suzhou</p>
+              <p className="pb-2 font-tech text-[13px] uppercase leading-relaxed tracking-widest text-[#6b665e]">Established in<br />Shengze, Suzhou</p>
             </div>
             <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-[#d8d3c8] pt-6">
-              <div><dt className="font-tech text-[10px] uppercase tracking-wider text-[#6b665e]">Application lines</dt><dd className="mt-2 font-display text-4xl">04</dd></div>
-              <div><dt className="font-tech text-[10px] uppercase tracking-wider text-[#6b665e]">Fabric categories</dt><dd className="mt-2 font-display text-4xl">10</dd></div>
+              <div><dt className="font-tech text-[13px] uppercase tracking-wider text-[#6b665e]">Application lines</dt><dd className="mt-2 font-display text-4xl">04</dd></div>
+              <div><dt className="font-tech text-[13px] uppercase tracking-wider text-[#6b665e]">Fabric categories</dt><dd className="mt-2 font-display text-4xl">10</dd></div>
             </dl>
           </div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-[#3a3a3a]">
+          <div className="space-y-5 text-base leading-relaxed text-[#3a3a3a]">
             <h3 className="text-xl font-semibold leading-snug">Suzhou Fanmao Textile<br />Technology Co., Ltd.</h3>
             <p>Founded in 2005, Fanmao develops and supplies high-performance fabrics for global apparel brands. Our collections span protective outdoor fabrics, materials for movement, down-proof shells and breathable linen-cotton textiles.</p>
             <p>Based in Shengze, Suzhou, we bring together fabric development, manufacturing and textile production relationships, including collaboration with Shenghong Group for dyeing.</p>
             <p>Our brand relationships include HLA, Asmara, Tom Tailor, MCS and Olsen.</p>
-            <a href="#certifications" className="inline-flex min-h-11 items-center gap-4 border-b border-[#a63810] font-tech text-[11px] uppercase tracking-wider text-[#a63810]">Explore certifications <span aria-hidden="true">↘</span></a>
+            <a href="#certifications" className="inline-flex min-h-11 items-center gap-4 border-b border-[#a63810] font-tech text-[13px] uppercase tracking-wider text-[#a63810]">Explore certifications <span aria-hidden="true">↘</span></a>
           </div>
         </div>
         <div className="mt-12 border-y border-[#d8d3c8] py-6 md:mt-16">
-          <p className="font-tech text-[10px] uppercase tracking-widest text-[#6b665e]">Selected brand relationships</p>
+          <p className="font-tech text-[13px] uppercase tracking-widest text-[#6b665e]">Selected brand relationships</p>
           <ul className="mt-5 flex flex-wrap items-center gap-x-10 gap-y-5 md:justify-between">
             {PARTNERS.map(partner => <li key={partner} className="text-xl font-semibold tracking-tight text-[#3a3a3a] md:text-2xl">{partner}</li>)}
           </ul>

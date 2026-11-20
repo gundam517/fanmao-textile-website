@@ -81,7 +81,7 @@ export default function Collections() {
           <SectionLabel index="01" label="Fabric Collections" />
           <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
             <h2 className="font-display text-5xl leading-[1.02] md:text-7xl">FOUR LINES.<br /><span className="text-[#f0531a]">ONE STANDARD.</span></h2>
-            <p className="max-w-md text-sm leading-relaxed text-[#59554e]">From outdoor shells to breathable linen-cotton trousers. Explore the applications, material directions and fabric types behind each collection.</p>
+            <p className="max-w-md text-base leading-relaxed text-[#59554e]">From outdoor shells to breathable linen-cotton trousers. Explore the applications, material directions and fabric types behind each collection.</p>
           </div>
         </Reveal>
         <div className="mt-12 space-y-16 md:mt-16 md:space-y-24">
@@ -95,18 +95,18 @@ export default function Collections() {
                   <GarmentGallery garments={garments} />
                 </div>
                 <div className={`min-w-0 ${i % 2 ? 'lg:order-1' : ''}`}>
-                  <div className="flex items-center gap-3 text-[#a63810]"><c.icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" /><p className="font-tech text-[10px] uppercase tracking-[0.18em]">{c.no} / {c.subtitle}</p></div>
+                  <div className="flex items-center gap-3 text-[#a63810]"><c.icon className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" /><p className="font-tech text-xs uppercase tracking-[0.18em]">{c.no} / {c.subtitle}</p></div>
                   <h3 className="mt-4 font-display text-4xl uppercase leading-tight md:text-5xl">{c.title}</h3>
                   <p className="mt-4 text-lg font-medium text-[#3a3a3a]">{presentation.headline}</p>
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#59554e]">{c.desc}</p>
+                  <p className="mt-3 max-w-lg text-base leading-relaxed text-[#59554e]">{c.desc}</p>
                   <div className="mt-7 border-t border-[#c9c3b8] pt-5">
-                    <p className="font-tech text-[10px] uppercase tracking-widest text-[#6b665e]">Typical applications</p>
-                    <ul className="mt-3 flex flex-wrap gap-2">{presentation.applications.map(application => <li key={application} className="bg-[#e1dbd0] px-3 py-2 text-xs text-[#3a3a3a]">{application}</li>)}</ul>
-                    <p className="mt-4 text-xs text-[#6b665e]">{presentation.direction}</p>
+                    <p className="font-tech text-xs uppercase tracking-widest text-[#6b665e]">Typical applications</p>
+                    <ul className="mt-3 flex flex-wrap gap-2">{presentation.applications.map(application => <li key={application} className="bg-[#e1dbd0] px-3 py-2 text-sm text-[#3a3a3a]">{application}</li>)}</ul>
+                    <p className="mt-4 text-sm text-[#6b665e]">{presentation.direction}</p>
                   </div>
                   <details className="collection-details mt-6 border-y border-[#c9c3b8]">
-                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-tech text-[11px] uppercase tracking-wider"><span>Explore fabric types ({c.items.length})</span><span className="collection-details-icon text-xl text-[#a63810]" aria-hidden="true">+</span></summary>
-                    <ul className="divide-y divide-[#d8d3c8] pb-3">{c.items.map(([name, detail]) => <li key={name} className="py-3"><h4 className="text-sm font-semibold">{name}</h4><p className="mt-1 text-[13px] leading-relaxed text-[#59554e]">{detail}</p></li>)}</ul>
+                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-tech text-sm uppercase tracking-wider"><span>Explore fabric types ({c.items.length})</span><span className="collection-details-icon text-xl text-[#a63810]" aria-hidden="true">+</span></summary>
+                    <ul className="divide-y divide-[#d8d3c8] pb-3">{c.items.map(([name, detail]) => <li key={name} className="py-3"><h4 className="text-base font-semibold">{name}</h4><p className="mt-1 text-sm leading-relaxed text-[#59554e]">{detail}</p></li>)}</ul>
                   </details>
                 </div>
               </article>

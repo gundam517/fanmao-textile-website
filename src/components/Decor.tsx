@@ -16,8 +16,8 @@ export function SectionLabel({ index, label }: { index: string; label: string })
   return (
     <div className="mb-10 flex items-center gap-4">
       <span className="font-tech text-sm font-bold text-[#f0531a]">{index}</span>
-      <span className="h-px w-14 bg-[#1a1a1a]" />
-      <span className="font-tech text-xs uppercase tracking-[0.3em] text-[#6b665e]">{label}</span>
+      <span className="h-px w-10 shrink-0 sm:w-14 bg-[#1a1a1a]" />
+      <span className="font-tech text-[13px] uppercase tracking-widest text-[#6b665e]">{label}</span>
     </div>
   )
 }
