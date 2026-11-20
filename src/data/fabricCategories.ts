@@ -32,7 +32,9 @@ export function fabricCategoryIds(product: FabricProduct): FabricCategoryId[] {
   if (fibers.has('P')) categories.push('polyester')
   if (/印花|印刷/.test(construction)) categories.push('printed')
   if (/反光印花/.test(construction)) categories.push('reflective-print')
-  if (/仿棉|棉感/.test(construction)) categories.push('cotton-like')
+  // Fanmao confirmed that references 330–347 belong in Cotton-like.
+  const referenceNumber = Number(product.code.split('/', 1)[0].match(/(\d{3})[A-Z]*$/)?.[1])
+  if ((referenceNumber >= 330 && referenceNumber <= 347) || /仿棉|棉感/.test(construction)) categories.push('cotton-like')
   if (fibers.has('L') || /亚麻/.test(construction)) categories.push('linen-cotton')
   return categories
 }
